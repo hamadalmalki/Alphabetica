@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learn Alphabet for Kids</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #f9c5d1, #fceabb);
+    color: #333;
+    text-align: center;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ff6f61;
+    text-shadow: 1px 1px 2px #ffb3ab;
+  }
+  .letters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+  .letter-btn {
+    background: #ffccf9;
+    border: 3px solid #ff6f61;
+    border-radius: 10px;
+    color: #ff3d6e;
+    font-weight: bold;
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+    margin: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(255, 111, 97, 0.5);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  .letter-btn:hover {
+    background: #ff6f61;
+    color: white;
+    transform: scale(1.1);
+  }
+  .display-area {
+    background: #fff3f0;
+    border: 3px solid #ff6f61;
+    border-radius: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(255, 111, 97, 0.3);
+  }
+  .display-letter {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ff3d6e;
+    margin-bottom: 10px;
+  }
+  .display-word {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #b33a4e;
+  }
+  .display-image {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(255, 111, 97, 0.4);
+  }
+  @media (max-width: 500px) {
+    .letter-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 1.4rem;
+      margin: 6px;
+    }
+    .display-letter {
+      font-size: 4rem;
+    }
+    .display-word {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Learn the Alphabet!</h1>
+<div class="letters-container" id="lettersContainer">
+  <!-- Letter buttons will go here -->
+</div>
+
+<div class="display-area" id="displayArea">
+  <div class="display-letter" id="displayLetter">A</div>
+  <div class="display-word" id="displayWord">Apple</div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Apple" class="display-image" id="displayImage" />
+</div>
+
+<script>
+  const alphabet = [
+    { letter: 'A', word: 'Apple', img: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg' },
+    { letter: 'B', word: 'Ball', img: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Basketball.png' },
+    { letter: 'C', word: 'Cat', img: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg' },
+    { letter: 'D', word: 'Dog', img: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Golden_Retriever_Carlos_(10581910556).jpg' },
+    { letter: 'E', word: 'Elephant', img: 'https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg' },
+    { letter: 'F', word: 'Fish', img: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Clown_fish_in_anemone.jpg' },
+    { letter: 'G', word: 'Guitar', img: 'https://upload.wikimedia.org/wikipedia/commons/4/45/GuitareClassique5.png' },
+    { letter: 'H', word: 'Hat', img: 'https://upload.wikimedia.org/wikipedia/commons/8/8f/Fedora_hat.png' },
+    { letter: 'I', word: 'Ice cream', img: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Ice_cream_cone_-_Chocolate_and_vanilla.jpg' },
+    { letter: 'J', word: 'Juice', img: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Orange_juice_2.jpg' },
+    { letter: 'K', word: 'Kite', img: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Kite_in_the_sky.jpg' },
+    { letter: 'L', word: 'Lion', img: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg' },
+    { letter: 'M', word: 'Monkey', img: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Young_macaque.jpg' },
+    { letter: 'N', word: 'Nest', img: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Bird_nest_with_eggs_-_geograph.org.uk_-_610897.jpg' },
+    { letter: 'O', word: 'Owl', img: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Western_Screech_Owl_-_Megascops_kennicottii_-_San_Juan_Island_NWR.jpg' },
+    { letter: 'P', word: 'Pineapple', img: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Pineapple_and_cross_section.jpg' },
+    { letter: 'Q', word: 'Queen', img: 'https://upload.wikimedia.org/wikipedia/commons/7/77/Queen_Elizabeth_II_1959.jpg' },
+    { letter: 'R', word: 'Rainbow', img: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Rainbow_Clouds_Washington_State_USA.jpg' },
+    { letter: 'S', word: 'Sun', img: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Sun_in_February.jpg' },
+    { letter: 'T', word: 'Tiger', img: 'https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg' },
+    { letter: 'U', word: 'Umbrella', img: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Umbrella_icon_black.svg' },
+    { letter: 'V', word: 'Violin', img: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Violin_VL100.png' },
+    { letter: 'W', word: 'Whale', img: 'https://upload.wikimedia.org/wikipedia/commons/5/55/Humpback_Whale_noaa.jpg' },
+    { letter: 'X', word: 'Xylophone', img: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Xylophone_01.jpg' },
+    { letter: 'Y', word: 'Yacht', img: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Yacht_Amphitrite_-_Amsterdam_Harbor_-_panoramio.jpg' },
+    { letter: 'Z', word: 'Zebra', img: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Zebra_Botswana_2.jpg' }
+  ];
+
+  const lettersContainer = document.getElementById('lettersContainer');
+  const displayLetter = document.getElementById('displayLetter');
+  const displayWord = document.getElementById('displayWord');
+  const displayImage = document.getElementById('displayImage');
+
+  // Create buttons for each letter
+  alphabet.forEach(item => {
+    const btn = document.createElement('button');
+    btn.textContent = item.letter;
+    btn.classList.add('letter-btn');
+    btn.addEventListener('click', () => {
+      displayLetter.textContent = item.letter;
+      displayWord.textContent = item.word;
+      displayImage.src = item.img;
+      displayImage.alt = item.word;
+    });
+    lettersContainer.appendChild(btn);
+  });
+</script>
+
+</body>
+</html>
